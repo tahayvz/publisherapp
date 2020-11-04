@@ -66,31 +66,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User addUser(User user) {
-        return  userRepository.save(user);
-    }
-
-    @Override
     public User updateUser(Long id) {
         User user = userRepository.findById(id).get();
         return userRepository.save(user);
     }
 
     @Override
-    public List<User> listUsers() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public User findById(Long id) {
         return userRepository.findById(id).get();
-    }
-
-    @Override
-    public User addBarcode(Long id) {
-        // TODO Auto-generated method stub
-        return null;
     }
 
 }

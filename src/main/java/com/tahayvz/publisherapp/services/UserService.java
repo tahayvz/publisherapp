@@ -18,11 +18,5 @@ public interface UserService extends UserDetailsService {
 
     User deleteUser(Long id);
 
-    User addUser(User user);
-
-    User addBarcode(Long id);
-
     User updateUser(Long id);
-
-    List<User> listUsers();
 }

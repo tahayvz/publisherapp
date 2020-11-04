@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User update</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3" style="margin: auto">
+
+        <h1>User Update</h1>
+
+        <form id="myForm" th:action="@{'/update-user-post/' + ${userObject.id}}"
+              th:object="${userObject}" method="POST">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="emailInput">Email:</label> <input type="text"
+                                                                  class="form-control" id="emailInput" th:field="*{email}"
+                                                                  placeholder="Enter email" />
+                </div>
+                <div class="form-group">
+                    <label for="nameInput">Name:</label> <input type="text"
+                                                                class="form-control" id="nameInput" th:field="*{name}"
+                                                                placeholder="Enter name">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!--<div th:insert="~{fragments/assets :: assets}" th:remove="tag"></div>-->
+
+</body>
+</html>

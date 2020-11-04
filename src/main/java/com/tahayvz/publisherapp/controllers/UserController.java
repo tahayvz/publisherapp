@@ -36,15 +36,28 @@ public class UserController extends CommonMethods{
         return "userlogin";
     }
 
-    @GetMapping("/add-user")
-    public String addUserPage(Model model) {
-        model.addAttribute("user", new User());
-        return "user-add";
+    @GetMapping("/update-user-page")
+    private String updateUserPage(Model model) {
+        User activeUser = userService.findByEmail(getActiveLoggedUserEmail());
+        System.out.println(activeUser.toString());
+        model.addAttribute("userObject", activeUser);
+        return "userupdate";
     }
 
-    @RequestMapping("add-user-post")
-    public String addUser(@ModelAttribute User user) {
-        userService.save(user);
-        return "redirect:/dashboard-page";
+    @PostMapping("/update-user-post/{id}")
+    private String updateUserPost(@PathVariable(name = "id") Long id, @ModelAttribute User user) {
+        User changedUser = userService.findById(id);
+        changedUser.setEmail(user.getEmail());
+        changedUser.setName(user.getName());
+        userService.updateUser(id);
+        return "redirect:/index";
+    }
+
+    @RequestMapping("/delete-user/{id}")
+    public String deleteUser(@PathVariable(name = "id") Long id) {
+        User user = userService.findById(id);
+        userService.deleteUser(id);
+
+        return "redirect:/index";
     }
 }
