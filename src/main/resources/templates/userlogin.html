@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+        <h1>User Login</h1>
+
+        <form th:action="${@environment.getProperty('app.user.login')}" method="POST" style="margin: auto;">
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Invalid username or password.</div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-info">You have been logged out.</div>
+            </div>
+            <div th:if="${param.complete}">
+                <div class="alert alert-success">You have been logged out.</div>
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email</label>: <input type="email" id="emailInput" name="email"
+                                                              class="form-control" autofocus="autofocus" placeholder="Email" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>: <input type="password" id="password" name="password"
+                                                               class="form-control" placeholder="Password" />
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Log In" />
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        </form>
+
+    </div>
+</div>
+
+<!--<div th:insert="~{fragments/assets :: assets}" th:remove="tag"></div>-->
+
+</body>
+</html>
