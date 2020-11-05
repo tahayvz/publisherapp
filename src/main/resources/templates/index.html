@@ -26,19 +26,44 @@
 <!--                <div class="panel-heading">-->
 <!--                    <h1 class="panel-title">Publishing House</h1>-->
 <!--                </div>-->
+
+                <!--/*@thymesVar id="user" type="guru.springframework.domain.User"*/-->
+                <div class="row">
+                    <div class="col-lg-offset-11 ">
+                        <a class="btn btn-primary" href="/" th:href="@{/logout}" role="button">Logout</a>
+                    </div>
+                </div>
                 <div class="panel-heading">
                     <div class="row">
 
-                        <div class="col-md-10 ">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11 ">
+                              <h1 class="panel-title" th:text="${user.name}"></h1>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-default" href="#" th:href="@{'/update-user-page'}" role="button">Update User</a>
+                        </div>
+
+                        <!--                        <div class="col-md-1" style="margin: auto">-->
+                        <!--                            <a class="btn btn-primary" href="/" th:href="@{/logout}">Logout</a>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+                <br/>
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col-md-11 ">
                             <h1 class="panel-title">Publishing House</h1>
                         </div>
-                        <div class="col-md-1 ">
-                            <td><a href="#" th:href="@{'/publishinghouse' + '/new'}" style="color:#FFFFFF;">New</a></td>
+<!--                        <div class="col-md-1 ">-->
+<!--                            <td><a href="#" th:href="@{'/publishinghouse' + '/new'}" style="color:#FFFFFF;">New</a></td>-->
+<!--                        </div>-->
+                        <div class="col-md-1">
+                            <a class="btn btn-default" href="#" th:href="@{'/publishinghouse' + '/new'}" role="button">New</a>
+                        </div>
 
-                        </div>
-                        <div class="col-md-1" style="margin: auto">
-                            <a class="btn btn-primary" href="/" th:href="@{/logout}">Logout</a>
-                        </div>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -64,7 +89,7 @@
                                 <td><a href="#">View</a></td>
                             </tr>
                             <tr th:each="publishingHouse : ${publishingHouses}">
-                                <!--/*@thymesVar id="publishingHouse" type="com.tahayvz.publisherapp.domain.Publishinghouse"*/-->
+                                <!--/*@thymesVar id="publishingHouse" type="com.tahayvz.publisherapp.domain.PublishingHouse"*/-->
                                 <td th:text="${publishingHouse.id}">334</td>
                                 <td th:text="${publishingHouse.name}">Tasty Goodnees 3</td>
                                 <td><a href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/show'}">View</a></td>
@@ -76,9 +101,6 @@
                 </div>
                 <form action="/update-user-page">
                     <input type="submit" value="Update user" />
-                </form>
-                <form action="/logout">
-                    <input type="submit" value="Logout" />
                 </form>
             </div>
         </div>

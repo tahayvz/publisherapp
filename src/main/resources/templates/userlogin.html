@@ -42,17 +42,18 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
+                    <div class="col-sm-3 " style="margin: auto">
                         <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Log In" />
+                    </div>
+
+                    <div class="col-sm-3" style="margin: auto">
+                        <a class="btn btn-primary" href="/" th:href="@{/registerpage}">Sign up</a>
                     </div>
                 </div>
             </div>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </form>
 
-        <form action="/registerpage">
-            <input type="submit" value="Sign up" />
-        </form>
 
     </div>
 </div>
