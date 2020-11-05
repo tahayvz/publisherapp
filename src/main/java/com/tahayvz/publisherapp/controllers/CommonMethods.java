@@ -1,12 +1,10 @@
 package com.tahayvz.publisherapp.controllers;
 
-
 import com.tahayvz.publisherapp.domain.User;
 import com.tahayvz.publisherapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-
 
 public abstract class CommonMethods {
 
