@@ -1,10 +1,15 @@
 package com.tahayvz.publisherapp.commands;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class AuthorCommand {
     private Long id;
     private Long publishingHouseId;
     private String name;
     private String descriptions;
+
+    private Set<BookCommand> books = new HashSet<>();
 
     public AuthorCommand() {
     }
@@ -39,5 +44,13 @@ public class AuthorCommand {
 
     public void setDescriptions(String descriptions) {
         this.descriptions = descriptions;
+    }
+
+    public Set<BookCommand> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<BookCommand> books) {
+        this.books = books;
     }
 }

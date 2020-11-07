@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>List Authors</title>
+    <title>List Books</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,29 +17,28 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="publishingHouse" type="com.tahayvz.publisherapp.domain.PublishingHouse"*/-->
-<!--/*@thymesVar id="authors" type="java.util.Set<com.tahayvz.publisherapp.commands.AuthorCommand>"*/-->
+<!--/*@thymesVar id="author" type="com.tahayvz.publisherapp.commands.AuthorCommand"*/-->
+<!--/*@thymesVar id="books" type="java.util.Set<com.tahayvz.publisherapp.commands.BookCommand>"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary">
-
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-md-10 ">
-                            <h1 class="panel-title">Authors</h1>
+                        <div class="col-md-10s ">
+                            <h1 class="panel-title">Books</h1>
                         </div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/author/new'}" role="button">New</a>
+                            <a class="btn btn-default" href="#" th:href="@{'/publishinghouse/' + ${author.getPublishingHouseId()} + '/authors'}" role="button">Back</a>
                         </div>
                         <div class="col-md-1">
-                            <a class="btn btn-default" href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/show'}" role="button">Back</a>
+                            <a class="btn btn-default" href="#" th:href="@{'/publishinghouse/' + ${author.getPublishingHouseId()} + '/author/' + ${author.id} + '/book/new'}" role="button">New</a>
                         </div>
                     </div>
-
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive" th:if="${not #lists.isEmpty(publishingHouse.authors)}">
+
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(author.books)}">
                         <table class="table table-hover ">
                             <thead class="thead-inverse">
                             <tr>
@@ -64,12 +63,12 @@
                                 <td><a href="#">Update</a></td>
                                 <td><a href="#">Delete</a></td>
                             </tr>
-                            <tr th:each="author : ${publishingHouse.authors}">
-                                <td th:text="${author.id}">334</td>
-                                <td th:text="${author.name}">Tasty Goodnees 3</td>
-                                <td><a href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/author/' + ${author.id} + '/show'}">View</a></td>
-                                <td><a href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/author/' + ${author.id} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/author/' + ${author.id} + '/delete'}">Delete</a></td>
+                            <tr th:each="book : ${author.books}">
+                                <td th:text="${book.id}">334</td>
+                                <td th:text="${book.name}">Tasty Goodnees 3</td>
+                                <td><a href="#" th:href="@{'/publishinghouse/' + ${author.getPublishingHouseId()} + '/author/' + ${author.id} + '/book/' + ${book.id} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/publishinghouse/' + ${author.getPublishingHouseId()} + '/author/' + ${author.id} + '/book/' + ${book.id} + '/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/publishinghouse/' + ${author.getPublishingHouseId()} + '/author/' + ${author.id} + '/book/' + ${book.id} + '/delete'}">Delete</a></td>
                             </tr>
                         </table>
                     </div>

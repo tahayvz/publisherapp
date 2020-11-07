@@ -52,6 +52,38 @@
                     </div>
                 </div>
             </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-11 ">
+                            <h1 class="panel-title" >Books</h1>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-default" href="#" th:href="@{'/publishinghouse/' + ${author.getPublishingHouseId()} + '/author/' + ${author.id} + '/book/new'}" role="button">New</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive" th:if="${not #lists.isEmpty(author.books)}">
+                    <table class="table table-hover ">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>View</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="book : ${author.books}">
+                            <td th:text="${book.id}">334</td>
+                            <td th:text="${book.name}">Tasty Goodnees 3</td>
+                            <td><a href="#" th:href="@{'/publishinghouse/' + ${book.publishingHouseId} + '/author/' + ${author.id} + '/book/' + ${book.id} + '/show'}">View</a></td>
+                            <td><a href="#" th:href="@{'/publishinghouse/' + ${book.publishingHouseId} + '/author/' + ${author.id} + '/book/' + ${book.id} + '/update'}">Update</a></td>
+                            <td><a href="#" th:href="@{'/publishinghouse/' + ${book.publishingHouseId} + '/author/' + ${author.id} + '/book/' + ${book.id} + '/delete'}">Delete</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

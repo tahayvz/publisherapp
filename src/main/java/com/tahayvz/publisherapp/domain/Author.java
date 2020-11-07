@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @EqualsAndHashCode(exclude = {"publishingHouse"})
@@ -22,6 +24,9 @@ public class Author {
     @ManyToOne
     private PublishingHouse publishingHouse;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
+    private Set<Book> books = new HashSet<>();
+
     public Author() {
     }
 
@@ -34,5 +39,11 @@ public class Author {
         this.name = name;
         this.descriptions=descriptions;
         this.publishingHouse = publishingHouse;
+    }
+
+    public Author addBook(Book book){
+        book.setAuthor(this);
+        this.books.add(book);
+        return this;
     }
 }
