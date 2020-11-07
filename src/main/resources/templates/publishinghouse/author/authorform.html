@@ -2,8 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>PublishingHouse Form</title>
-
+    <title>Edit Author</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
@@ -17,32 +16,23 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="publishingHouse" type="guru.springframework.domain.PublishingHouse"*/-->
+
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form th:object="${publishingHouse}" th:action="@{/publishinghouse/}" method="post">
-
-                <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-                    <p>Please Correct Errors Below</p>
-                </div>
+            <!--/*@thymesVar id="author" type="com.tahayvz.publisherapp.commands.AuthorCommand"*/-->
+            <form  th:object="${author}" th:action="@{'/publishinghouse/' + ${author.getPublishingHouseId()} + '/author'} " method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h1 class="panel-title">Edit PublishingHouse Information</h1>
+                            <h1 class="panel-title">Edit Author Information</h1>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-3 form-group" th:class="${#fields.hasErrors('name')}
-                                ? 'col-md-3 form-group has-error' : 'col-md-3 form-group'">
-                                    <label th:text="#{publishingHouse.name}">PublishingHouse Name d:</label>
-                                    <input type="text" class="form-control" th:field="*{name}" th:errorclass="has-error"/>
-                                    <span class="help-block" th:if="${#fields.hasErrors('name')}">
-                                        <ul>
-                                            <li th:each="err : ${#fields.errors('name')}" th:text="${err}"/>
-                                        </ul>
-                                    </span>
+                                <div class="col-md-3 form-group">
+                                    <label>Name:</label>
+                                    <input type="text" class="form-control" th:field="*{name}"/>
                                 </div>
                             </div>
                         </div>

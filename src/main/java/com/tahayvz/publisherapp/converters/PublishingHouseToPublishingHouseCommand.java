@@ -11,6 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class PublishingHouseToPublishingHouseCommand implements Converter<PublishingHouse, PublishingHouseCommand>{
 
+    private final AuthorToAuthorCommand authorConverter;
+
+    public PublishingHouseToPublishingHouseCommand(AuthorToAuthorCommand authorConverter) {
+        this.authorConverter = authorConverter;
+    }
+
     @Synchronized
     @Nullable
     @Override
@@ -23,6 +29,11 @@ public class PublishingHouseToPublishingHouseCommand implements Converter<Publis
         command.setId(source.getId());
         command.setName(source.getName());
         command.setDescriptions(source.getDescriptions());
+
+        if (source.getAuthors() != null && source.getAuthors().size() > 0){
+            source.getAuthors()
+                    .forEach(author -> command.getAuthors().add(authorConverter.convert(author)));
+        }
 
         return command;
     }
