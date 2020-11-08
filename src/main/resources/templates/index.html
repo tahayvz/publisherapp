@@ -22,43 +22,37 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary">
-
-                <!--                <div class="panel-heading">-->
-                <!--                    <h1 class="panel-title">Publishing House</h1>-->
-                <!--                </div>-->
-
-                <div class="row">
-                    <div class="col-lg-offset-11 ">
-                        <a class="btn btn-primary" href="/" th:href="@{/logout}" role="button">Logout</a>
+                <div class="panel-default ">
+                    <div class="row">
+                        <div class="pull-right"  style="margin-right: 15px">
+                            <a class="btn btn-primary" href="/" th:href="@{/logout}" role="button">Logout</a>
+                        </div>
                     </div>
                 </div>
+                <br/>
                 <div class="panel-heading">
-
                     <!--/*@thymesVar id="user" type="com.tahayvz.publisherapp.domain.User"*/-->
                     <div class="row">
                         <div class="col-md-10 ">
                             <h1 class="panel-title" th:text="${user.name}"></h1>
                         </div>
-                        <div class="col-md-2">
+                        <div class="pull-right">
                             <a class="btn btn-default" href="#" th:href="@{'/update-user-page'}" role="button">Update User</a>
                         </div>
-
-                        <!--                        <div class="col-md-1" style="margin: auto">-->
-                        <!--                            <a class="btn btn-primary" href="/" th:href="@{/logout}">Logout</a>-->
-                        <!--                        </div>-->
                     </div>
                 </div>
-                <br/>
+                <div class="panel-body">
+
+                    <a href="#" th:href="@{'/publishinghouse' + '/book'+ '/find'}">Search Books</a>
+
+                </div>
                 <div class="panel-heading">
                     <div class="row">
 
                         <div class="col-md-11 ">
                             <h1 class="panel-title">Publishing House</h1>
                         </div>
-                        <!--                        <div class="col-md-1 ">-->
-                        <!--                            <td><a href="#" th:href="@{'/publishinghouse' + '/new'}" style="color:#FFFFFF;">New</a></td>-->
-                        <!--                        </div>-->
-                        <div class="col-md-1">
+                        <div class="pull-right">
                             <a class="btn btn-default" href="#" th:href="@{'/publishinghouse' + '/new'}" role="button">New</a>
                         </div>
 

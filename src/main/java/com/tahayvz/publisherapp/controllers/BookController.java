@@ -96,7 +96,7 @@ public class BookController {
     }
 
     @GetMapping("/publishinghouse/{publishingHouseId}/author/{authorId}/book/find")
-    public String processFindForm(Book book, BindingResult result, Model model, @PathVariable String publishinghouseId){
+    public String processFindForm(Book book, BindingResult result, Model model, @PathVariable String publishingHouseId){
         if ((book.getName() == "")&(book.getSubname() == "")&(book.getIsbnNumber() == null)) {
             book.setName(""); // empty string signifies broadest possible search
         }
@@ -118,7 +118,7 @@ public class BookController {
             if(results.size() == 1){book = results.get(0);}
             if(resultsSubname.size() == 1){book = resultsSubname.get(0);}
             if(resultsIsbnNumber.size() == 1){book = resultsIsbnNumber.get(0);}
-            return "redirect:/publishinghouse/" + publishinghouseId + "/author/"+ book.getAuthor().getId()+ "/book/" + book.getId() + "/show";
+            return "redirect:/publishinghouse/" + publishingHouseId + "/author/"+ book.getAuthor().getId()+ "/book/" + book.getId() + "/show";
         } else if(results.size() > 1){
             // multiple owners found
             model.addAttribute("selections", results);

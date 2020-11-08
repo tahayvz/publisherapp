@@ -28,7 +28,7 @@
                             <div class="col-md-11">
                                 <h1 class="panel-title" th:text="${publishingHouse.name}">PublishingHouse Name Here!</h1>
                             </div>
-                            <div class="col-md-1">
+                            <div class="pull-right" >
                                 <a class="btn btn-default" href="#" th:href="@{'/'}" role="button">Back</a>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                             <div class="col-md-11 ">
                                 <h1 class="panel-title">Authors</h1>
                             </div>
-                            <div class="col-md-1">
+                            <div class="pull-right">
                                 <a class="btn btn-default" href="#"
                                    th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/authors'}" role="button">View</a>
                             </div>

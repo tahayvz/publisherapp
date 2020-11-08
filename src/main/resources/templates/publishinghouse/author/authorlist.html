@@ -23,17 +23,21 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-primary">
-
+                <div class="panel-default ">
+                    <div class="row">
+                        <div class="pull-right"  style="margin-right: 15px">
+                            <a class="btn btn-primary" href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/show'}" role="button">Back</a>
+                        </div>
+                    </div>
+                </div>
+                <br/>
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-10 ">
                             <h1 class="panel-title">Authors</h1>
                         </div>
-                        <div class="col-md-1">
+                        <div class="pull-right">
                             <a class="btn btn-default" href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/author/new'}" role="button">New</a>
-                        </div>
-                        <div class="col-md-1">
-                            <a class="btn btn-default" href="#" th:href="@{'/publishinghouse/' + ${publishingHouse.id} + '/show'}" role="button">Back</a>
                         </div>
                     </div>
 
