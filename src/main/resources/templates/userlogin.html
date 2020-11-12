@@ -17,49 +17,49 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <header>
+        <div class="fixed-top text-center mt-2">
+            <p class="h1 text-info font-weight-bold">SpringPublisherApp</p>
+        </div>
+        <hr/>
+    </header>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 class="form-signin-heading text-center">Login</h2>
+            <hr/>
+            <form th:action="${@environment.getProperty('app.user.login')}" method="POST" style="margin: auto;">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">Invalid username or password.</div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">You have been logged out.</div>
+                </div>
+                <div th:if="${param.complete}">
+                    <div class="alert alert-success">You have been logged out.</div>
+                </div>
+                <div class="form-group">
+                    <label for="emailInput">Email</label>:
+                    <input type="email" id="emailInput" name="email"
+                                                                  class="form-control" autofocus="autofocus" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>: <input type="password" id="password" name="password"
+                                                                   class="form-control" placeholder="Password" />
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3 " style="margin: auto">
+                            <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Log In" />
+                        </div>
 
-        <h1>User Login</h1>
-
-        <form th:action="${@environment.getProperty('app.user.login')}" method="POST" style="margin: auto;">
-            <div th:if="${param.error}">
-                <div class="alert alert-danger">Invalid username or password.</div>
-            </div>
-            <div th:if="${param.logout}">
-                <div class="alert alert-info">You have been logged out.</div>
-            </div>
-            <div th:if="${param.complete}">
-                <div class="alert alert-success">You have been logged out.</div>
-            </div>
-            <div class="form-group">
-                <label for="emailInput">Email</label>:
-                <input type="email" id="emailInput" name="email"
-                                                              class="form-control" autofocus="autofocus" placeholder="Email" />
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>: <input type="password" id="password" name="password"
-                                                               class="form-control" placeholder="Password" />
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-3 " style="margin: auto">
-                        <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Log In" />
-                    </div>
-
-                    <div class="col-sm-3" style="margin: auto">
-                        <a class="btn btn-primary" href="/" th:href="@{/registerpage}">Sign up</a>
+                        <div class="col-sm-3" style="margin: auto">
+                            <a class="btn btn-primary" href="/" th:href="@{/registerpage}">Sign up</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-        </form>
-
-
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            </form>
+        </div>
     </div>
-</div>
-
-<!--<div th:insert="~{fragments/assets :: assets}" th:remove="tag"></div>-->
-
 </body>
 </html>
